@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.staticfile.net/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+  <button id="btn">GET</button>
+  <button id="btn2">POST</button>
+
+
+  <script>
+    $(function () {
+
+    //  测试get请求
+  $("#btn").on("click", function () { 
+       $.ajax({
+        type: "GET",
+        url: "http://127.0.0.1/api/get",
+        data: {
+          name: "zhangsan",
+          age: 18,
+        },
+        success: function (res) {console.log(res);},  
+  })
+    })
+
+        //  测试post请求
+  $("#btn2").on("click", function () { 
+       $.ajax({
+        type: "POST",
+        url: "http://127.0.0.1/api/post",
+        data: {
+          bookname: "jack",
+          price: 18,
+        },
+        success: function (res) {console.log(res);},  
+  })
+    })
+
+  })
+  </script>
+</body>
+</html> 
