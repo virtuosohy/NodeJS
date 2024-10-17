@@ -133,26 +133,26 @@ const fs = require('fs')
 
 fs.readFile('./files/成绩.txt', 'utf8', function (err, dataStr) {
   if(err){
-    return console.log('文件读取失败' + err.message)  
+    return console.log('文件读取失败' + err.message)
   }
   // console.log('文件读取成功，内容是：' + result)
 
   //* 按照空格进行分割， 
- const arrOld = dataStr.split(' ')
+  const arrOld = dataStr.split(' ')
 
- 
+
   //* 循环分割后的数组  ，对字符串的替换操作  
-const arrNew = [ ]
-arrOld.forEach(item =>{
-  arrNew.push(item.replace('=' ,':'))
-})
+  const arrNew = [ ]
+  arrOld.forEach(item =>{
+    arrNew.push(item.replace('=' ,':'))
+  })
 
 
   //* 把新数组的每一项，进行合并，得到一个新数组
 
   const newstr = arrNew.join('\r\n')
   console.log(newstr);
-  
+
 })
 
 ```
@@ -1227,4 +1227,152 @@ res.setHeader('Access-Control-Allow-Methods' ,'POST, GET, DELETE')
 //允许所有
 res.setHeader('Access-Control-Allow-Methods' ,'*')
 ```
+
+
+
+
+
+
+
+***
+
+
+
+# 伍-数据库
+
+市面上的数据库有很多种，最常见的数据库有如下几个：
+
+- MySQL 数据库（目前使用最广泛、流行度最高的开源免费数据库；Community + Enterprise）
+- Oracle 数据库（收费）
+- SQL Server 数据库（收费）
+- Mongodb 数据库（Community + Enterprise）
+
+其中，MySQL、Oracle、SQL Server 属于传统型数据库（又叫做：关系型数据库 或 SQL 数据库），这三者的
+设计理念相同，用法比较类似。
+而 Mongodb 属于新型数据库（又叫做：非关系型数据库 或 NoSQL 数据库），它在一定程度上弥补了传统型
+数据库的缺陷。
+
+
+
+## 传统型数据库的数据组织结构
+
+### 1.Excel 的数据组织结构
+
+每个 Excel 中，数据的组织结构分别为工作簿、工作表、数据行、列这 4 大部分组成
+
+
+
+### 2.传统型数据库的数据组织结构
+
+在传统型数据库中，数据的组织结构分为数据库(database)、数据表(table)、数据行(row)、字段(field)这 4 大部分组成。
+
+### 启动mysql
+
+services.msc中启动mysql
+
+或者是
+
+```bash
+net stop/start mysql80
+```
+
+
+
+### 
+
+## 使用 SQL 管理数据库
+
+### 什么是 SQL
+
+SQL（英文全称：Structured Query Language）是结构化查询语言，专门用来访问和处理数据库的编程语言。能够让
+我们以编程的形式，操作数据库里面的数据。
+三个关键点：
+① SQL 是一门数据库编程语言
+② 使用 SQL 语言编写出来的代码，叫做 SQL 语句
+③ SQL 语言只能在关系型数据库中使用（例如 MySQL、Oracle、SQL Server）。非关系型数据库（例如 Mongodb）
+不支持 SQL 语言
+
+
+
+重点掌握如何使用 SQL 从数据表中：
+查询数据（select） 、插入数据（insert into） 、更新数据（update） 、删除数据（delete）
+额外需要掌握的 4 种 SQL 语法：
+where 条件、and 和 or 运算符、order by 排序、count(*) 函数
+
+
+
+### SQL 的 SELECT 语句
+
+SELECT 语句用于从表中查询数据。执行的结果被存储在一个结果表中（称为结果集）。语法格式如下
+
+
+
+```mysql
+--查询所有的数据
+select* FORM 表名称
+--查询指定  的数据
+select 列名称 FORM 表名称
+```
+
+
+
+### SQL 的 INSERT INTO 语句
+
+INSERT INTO 语句用于向数据表里面插入数据行
+
+```mysql
+--列和值一样对应
+insert into table_name(列1，列2)  values(值1，值2)
+```
+
+> 向users表里面插入一条`username`为`jack`，`password`为`789`的用户数据
+
+```mysql
+insert into `01`.users (username , password) values ('jack' ,'789');
+SELECT username FROM `01`.users;
+```
+
+
+
+
+
+### SQL 的 UPDATE 语句
+
+用于修改表中的数据
+
+```mysql
+update 表名称 set 列名称 = 新值 where 列名称 =某值
+```
+
+> 把表中id为1的用户密码改为888888
+
+```mysql
+update `01`.users set password="888888"  where id=1;
+```
+
+> 更新某一行的若干列
+>
+> 把id为2的俩个数据更新
+
+```mysql
+update `01`.users set username="二",password="admin"  where id=2;
+```
+
+
+
+### SQL 的 UPDATE 语句
+
+用于删除表中的行
+
+```mysql
+delete from 表名 where 列名称 = 值
+```
+
+> 删除id=1
+
+```mysql
+delete from `01`.users where id=1;
+```
+
+
 
