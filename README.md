@@ -11,7 +11,9 @@
 - Chrome 浏览器 => V8
 - Firefox 浏览器 => OdinMonkey（奥丁猴）
 - Safri 浏览器 => JSCore
-- IE 浏览器 => Chakra（查克拉）
+-  IE 浏览器 => Chakra（查克拉）
+
+
 
 ### 2.为什么 JavaScript 可以操作 DOM 和 BOM
 
@@ -62,6 +64,8 @@ fs 模块是 Node.js 官方提供的、用来操作文件的模块。它提供�
 - fs.readFile() 方法，用来读取指定文件中的内容
 - fs.writeFile() 方法，用来向指定的文件中写入内容
 
+
+
 如果要在 JavaScript 代码中，使用 fs 模块来操作文件，则需要使用如下的方式先导入它：
 
 ```js
@@ -90,6 +94,8 @@ fs.readFile(path[,options],callback)
 
 
 
+
+
 ### 2. 向指定的文件中写入内容
 
 #### fs.writeFile() 的语法格式
@@ -103,9 +109,11 @@ fs.writeFile(file,data[,options],callback)
 
 
 - 参数1：必选参数，需要指定一个文件路径的字符串，表示文件的存放路径。
-- 参数2：必选参数，表示要写入的内容。
-- 参数3：可选参数，表示以什么格式写入文件内容，默认值是 utf8。
-- 参数4：必选参数，文件写入完成后的回调函数。
+-  参数2：必选参数，表示要写入的内容。
+-  参数3：可选参数，表示以什么格式写入文件内容，默认值是 utf8。
+-  参数4：必选参数，文件写入完成后的回调函数。
+
+
 
 
 
@@ -163,7 +171,7 @@ __dirname
 
 
 
-------
+***
 
 
 
@@ -181,8 +189,9 @@ path.join([..paths])
 
 参数解读：
 
-- ...paths  路径片段的序列
-- 返回值: 
+-  ...paths  路径片段的序列
+-  返回值:
+
 
 
 
@@ -201,6 +210,8 @@ path.basename(path[,ext])
 - ext  可选参数，表示文件扩展名
 - 返回:  表示路径中的最后一部分
 
+
+
 ### 3.获取路径中的文件扩展名
 
 path.extname() 的语法格式
@@ -216,7 +227,7 @@ path 必选参数，表示一个路径的字符串
 
 
 
-------
+***
 
 
 
@@ -296,7 +307,7 @@ const server = http.createServer()
 
 
 
- 步骤3 - 为服务器实例绑定 request 事件
+步骤3 - 为服务器实例绑定 request 事件
 为服务器实例绑定 request 事件，即可监听客户端发送过来的网络请求：
 
 ```js
@@ -496,7 +507,7 @@ server.listen(80,() => {
 
 
 
-------
+****
 
 
 
@@ -518,6 +529,8 @@ Node.js 中根据模块来源的不同，将模块分为了 3 大类，分别是
 - 内置模块（内置模块是由 Node.js 官方提供的，例如 fs、path、http 等）
 - 自定义模块（用户创建的每个 .js 文件，都是自定义模块）
 - 第三方模块（由第三方开发出来的模块，并非官方提供的内置模块，也不是用户创建的自定义模块，使用前需要先下载）
+
+
 
 ## 2.模块作用域
 
@@ -634,6 +647,8 @@ Express 的本质：就是一个 npm 上的第三方包，提供了快速创建 
 - API 接口服务器：专门对外提供 API 接口的服务器。
 
   使用 Express，我们可以方便、快速的创建 Web 网站的服务器或 API 接口的服务器。
+
+
 
 ### 1.2 Express 的基本使用
 
@@ -866,7 +881,7 @@ const m = function(req,res,next){
 }
 ```
 
- 
+
 
 #### 2.全局生效的中间件
 
@@ -913,7 +928,7 @@ app.get('/' ,mw1 ,(req ,res) =>{res.send('xxx')})
 绑定到 express.Router() 实例上的中间件，叫做路由级别的中间件。它的用法和应用级别中间件没有任何区别。只不
 过，应用级别中间件是绑定到 app 实例上，路由级别中间件绑定到 router 实例上，
 
-```js
+````js
 const app = express();
 const router = express.Router()
 
@@ -923,7 +938,7 @@ router.use(function(req,res,next){
 })
 
 app.use('/',router)
-```
+````
 
 
 
@@ -1016,7 +1031,7 @@ const router = express.Router()
 module.exports = router
 ```
 
-app.js	
+app.js
 
 ```js
 const router =require('./apiRouter');
@@ -1027,7 +1042,7 @@ app.use('/api', router);
 
 
 
-### 编写 GET 接口
+###  编写 GET 接口
 
 app.js
 
@@ -1047,7 +1062,7 @@ app.listen(80, () => {
 
 ```
 
-apiRouter.js	
+apiRouter.js
 
 ```js
 //* 路由模块
@@ -1104,7 +1119,7 @@ app.listen(80, () => {
 
 apiRouter
 
-```js
+```JS
 //* 路由模块
 
 //* 1.导入 express
@@ -1184,13 +1199,13 @@ res.setHeader('Access-Control-Allow-Origin' ,'*')
 
 
 
-#### CORS 响应头部 - Access-Control-Allow-Headers
+####  CORS 响应头部 - Access-Control-Allow-Headers
 
 默认情况下，CORS 仅支持客户端向服务器发送如下的 9 个请求头：
 Accept、Accept-Language、Content-Language、DPR、Downlink、Save-Data、Viewport-Width、Width 、
 Content-Type （值仅限于 text/plain、multipart/form-data、application/x-www-form-urlencoded 三者之一）
 
- 
+
 
 如果客户端向服务器发送了额外的请求头信息，则需要在服务器端，通过 Access-Control-Allow-Headers 对额外
 的请求头进行声明，否则这次请求会失败！
@@ -1219,7 +1234,7 @@ res.setHeader('Access-Control-Allow-Methods' ,'*')
 
 
 
-------
+***
 
 
 
@@ -1263,7 +1278,7 @@ net stop/start mysql80
 
 
 
-###  
+### 
 
 ## 使用 SQL 管理数据库
 
@@ -1391,7 +1406,7 @@ select* from users where username<>'admin'
 
 
 
-### SQL 的 AND 和 OR 运算符
+###  SQL 的 AND 和 OR 运算符
 
 AND 和 OR 可在 WHERE 子语句中把两个或多个条件结合起来。
 AND 表示必须同时满足多个条件，相当于 JavaScript 中的 `&&` 运算符，例如 if (a !== 10 && a !== 20)
@@ -1428,7 +1443,7 @@ select* from users order by status
 
 调用 db.query() 函数，指定要执行的 SQL 语句，通过回调函数拿到执行的结果：
 
-```mysql
+````mysql
 const mysql = require('mysql2');
 
 const db = mysql.createConnection({
@@ -1445,7 +1460,7 @@ db.query('SELECT 1', (err, results) => {
   }
   console.log(results);
 })
-```
+````
 
 
 
@@ -1484,7 +1499,7 @@ db.query('insert into users(username,password) values("admin","123456")', (err, 
 
 插入多个
 
-```js
+````js
 const user = { username:'' ,password:''}
 
 const sqlstr = 'insert into users set ? '
@@ -1492,7 +1507,7 @@ const sqlstr = 'insert into users set ? '
 db.query(sqlstr,users,(err，result）=> {
     //成功或者失败
 }
-```
+````
 
 
 
@@ -1527,7 +1542,7 @@ db.query('update users set username="admin123" where id=4', (err, results) => {
 
 
 
-## Session 认证机制
+##  Session 认证机制
 
 ### HTTP 协议的无状态性
 
@@ -1573,7 +1588,7 @@ npm install express-session
 
 
 
-#### 配置 express-session 中间件
+####  配置 express-session 中间件
 
 express-session 中间件安装成功后，需要通过 app.use() 来注册 session 中间件，示例代码如下：
 
@@ -1648,5 +1663,222 @@ app.post('/api/logout', (req, res) => {
     msg: '退出登录成功',
   })
 })
+```
+
+
+
+
+
+## 使用JWT验证
+
+![72981782296](C:\Users\huipu\AppData\Local\Temp\1729817822969.png)
+
+
+
+用户的信息通过 Token 字符串的形式，保存在客户端浏览器中。服务器通过还原 Token 字符串的形式来认证用户的身份。
+
+
+
+### JWT 的组成部分
+
+JWT 通常由三部分组成，分别是 Header（头部）、Payload（有效荷载）、Signature（签名）。
+三者之间使用英文的“.”分隔，格式如下：
+
+```
+Header.Payload.Signature
+```
+
+Payload 部分才是真正的用户信息，它是用户信息经过加密之后生成的字符串。
+
+Header 和 Signature 是安全性相关的部分，只是为了保证 Token 的安全性。
+
+
+
+### JWT的使用方式
+
+客户端收到服务器返回的 JWT 之后，通常会将它储存在 localStorage 或 sessionStorage 中。
+此后，客户端每次与服务器通信，都要带上这个 JWT 的字符串，从而进行身份认证。推荐的做法是把 JWT 放在 HTTP
+请求头的 Authorization 字段中，
+
+```
+Authorization:Bearer <token>
+```
+
+
+
+### 安装 JWT 相关的包
+
+运行如下命令，安装如下两个 JWT 相关的包
+
+```bash
+npm install jsonwebtoken express-jwt
+```
+
+
+
+
+
+
+
+
+
+# 柒.自定义脚手架
+
+需要涵盖：
+
+- 创建自定义全局命令
+- 命令参数接受处理
+- 终端交互
+- 下载远程代码
+- 项目初始化完成的提示
+
+## 创建自定义全局命令
+
+> 终端使用bash
+
+#### 1、创建bin文件夹，里面cli.js
+
+在bin上层文件夹
+
+```bash
+npm init 
+project name//(自定义)
+npm link  //(挂载到全局)
+```
+
+
+
+#### 2.在cli.js中
+
+需要引入commander
+
+>npm i  commander
+
+> --help选项参数处理
+
+```javascript
+#!  /usr/bin/env node
+
+// console.log('hello world');
+// process.argv   // 获取命令行参数
+
+const {program} = require('commander');
+
+program.option('-f --framwork <framwork>', '创建框架')
+
+program.parse(process.argv)
+```
+
+
+
+## commander自定义命令
+
+```javascript
+#!  /usr/bin/env node
+
+const {program} = require('commander');
+
+
+program.option('-f --framwork <framwork>', '创建框架')
+program
+.command('create <project>[other...]')
+.alias('crt')   // 缩写
+.description('创建项目')  
+.action((project,args) =>{
+console.log('创建项目',project)
+console.log('其他参数',args)
+})
+
+program.parse(process.argv)
+
+
+
+
+```
+
+
+
+## 逻辑代码模块化拆分
+
+在主文件夹创建lib文件夹，里面创建core
+
+有help.js
+
+```javascript
+const myhelp = function(program){
+  program.option('-f --framwork <framwork>', '创建框架')
+}
+module.exports = myhelp
+
+```
+
+mycommander.js
+
+```javascript
+const myaction = require('./action.js');
+const mycommander = function (program){
+program
+.command('create <project>[other...]')
+.alias('crt')   // 缩写
+.description('创建项目')  
+.action(myaction)
+
+}
+
+module.exports = mycommander;
+
+```
+
+action.js
+
+```javascript
+const myAction = (project,args) =>{
+console.log('创建项目',project)
+console.log('其他参数',args)
+}
+module.exports = myAction;
+```
+
+主文件夹/bin/cli.js
+
+```javascript
+#!  /usr/bin/env node
+
+const {program} = require('commander');
+const myhelp = require('../lib/core/help')
+myhelp(program)
+
+const mycommander = require('../lib/core/mycommander')
+mycommander(program)
+
+program.parse(process.argv)
+
+// program.parse(process.argv)
+
+
+
+```
+
+
+
+
+
+## 命令行问答交互工具 inquirer
+
+首先npm i inquirer
+
+test.js
+
+```javascript
+var inquirer = require('inquirer');
+inquirer.prompt([
+    {
+      type: 'input',
+      name: 'username',
+      message: '你的名字',
+    }
+  ]).then((answer) => {
+    console.log(answer);
+  });
 ```
 
