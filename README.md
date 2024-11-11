@@ -1867,18 +1867,42 @@ program.parse(process.argv)
 
 首先npm i inquirer
 
-test.js
+action.js
 
 ```javascript
-var inquirer = require('inquirer');
-inquirer.prompt([
+const inquirer = require('inquirer')
+const config = require('../../config')
+const myAction = (project,args) =>{
+// console.log('创建项目',project)
+// console.log('其他参数',args)
+   inquirer.prompt([
     {
-      type: 'input',
-      name: 'username',
-      message: '你的名字',
+      type:'list',
+      name:'famework',
+      choices:config.framwork,
+      message:'请选择框架'
     }
-  ]).then((answer) => {
-    console.log(answer);
-  });
+   ]).then(answer =>{
+    console.log('你选择的框架是',answer.famework);
+   }
+   )
+
+}
+module.exports = myAction;
 ```
+
+
+
+在主文件创建config.js
+
+```javascript
+module.exports ={
+framwork:['express','koa','egg','thinkjs']
+
+}
+```
+
+
+
+
 
