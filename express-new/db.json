@@ -1,0 +1,15 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "John",
+      "age": 25
+    },
+    {
+      "id": 2,
+      "name": "Bob",
+      "age": 15
+    }
+  ],
+  "videos": []
+}
